@@ -1,6 +1,5 @@
 package ru.eshakin.deeplay;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,8 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class CostGetterTest {
 
     @Test
-    void parseCostsFromFile() {
-        Assertions.assertTrue(CostGetter.parseCostsFromFile("data.txt"));
-        Assertions.assertFalse(CostGetter.parseCostsFromFile("NOTFOUND.txt"));
+    void parseCostsFromFile_ReturnFalse_IfNotFound() {
+        assertFalse(CostGetter.parseCostsFromFile("NOTFOUND.txt"));
     }
+    @Test
+    void parseCostsFromFile_ReturnTrue_IfExist() {
+        assertTrue(CostGetter.parseCostsFromFile("data.txt"));
+    }
+
 }

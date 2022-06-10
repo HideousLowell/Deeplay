@@ -34,12 +34,22 @@ class PathFinder {
         }
     }
 
+    private boolean BadCoordinates(Coordinates coordinate) {
+        if (coordinate.i < 0 || coordinate.i >= size)
+            return true;
+        if (coordinate.j < 0 || coordinate.j >= size)
+            return true;
+        return false;
+    }
+
     /**
      * Аналог алгоритма Дейкстры, который работает не с графом, а с матрицей
      *
-     * @return Наикратчайший путь
+     * @return -1, если координаты за пределами карты
      */
      int getShortestPath(Coordinates start, Coordinates finish) {
+        if (BadCoordinates(start) || BadCoordinates(finish))
+            return -1;
         minWay[start.i][start.j] = 0;
         myQueue.add(start);
         while (!myQueue.isEmpty()) {
