@@ -3,20 +3,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class PathFinder {
-    public class Pair {
-        public int i;
-        public int j;
-        Pair(int i, int j) {
-            this.i = i;
-            this.j = j;
-        }
-    }
 
-    private Queue<Pair> myQueue = new LinkedList<>();
-    private boolean used[][];
-    private int minWay[][];
-    private int[][] graph;
-    private int size;
+    private final Queue<Coordinates> myQueue = new LinkedList<>();
+    private final boolean[][] used;
+    private final int[][] minWay;
+    private final int[][] graph;
+    private final int size;
 
     PathFinder(int[][] graph) {
         this.graph = graph;
@@ -27,28 +19,36 @@ public class PathFinder {
             Arrays.fill(line, Integer.MAX_VALUE);
     }
 
-    private void visitNeighbourCell(int i, int j, Pair from) {
+    /**
+     * Вспомогательная функция для getShortestPath
+     * Делает шаг в клетку с координатами i, j
+     */
+    private void visitCell(int i, int j, Coordinates from) {
         if (i < 0 || j < 0 || i >= size || j >= size) return;
         int tempWay = minWay[from.i][from.j] + graph[i][j];
         if (!used[i][j] && minWay[i][j] > tempWay) {
             minWay[i][j] = tempWay;
-            myQueue.add(new Pair(i, j));
+            myQueue.add(new Coordinates(i, j));
         }
     }
 
-     public int getShortestPath(int startI, int startJ,  int finishI, int finishJ) {
-         minWay[startI][startJ] = 0;
-         myQueue.add(new Pair(startI, startJ));
+    /**
+     * Аналог алгоритма Дейкстры, который работает не с графом, а с матрицей
+     * @return Наикратчайший путь
+     */
+     public int getShortestPath(Coordinates start,  Coordinates finish) {
+         minWay[start.i][start.j] = 0;
+         myQueue.add(start);
         while (!myQueue.isEmpty()) {
-            Pair curPos = myQueue.peek();
+            Coordinates curPos = myQueue.peek();
             myQueue.remove();
             used[curPos.i][curPos.j] = true;
-            visitNeighbourCell(curPos.i - 1, curPos.j, curPos);
-            visitNeighbourCell(curPos.i + 1, curPos.j, curPos);
-            visitNeighbourCell(curPos.i, curPos.j - 1, curPos);
-            visitNeighbourCell(curPos.i, curPos.j + 1, curPos);
+            visitCell(curPos.i - 1, curPos.j, curPos);
+            visitCell(curPos.i + 1, curPos.j, curPos);
+            visitCell(curPos.i, curPos.j - 1, curPos);
+            visitCell(curPos.i, curPos.j + 1, curPos);
         }
-        return minWay[finishI][finishJ];
+        return minWay[finish.i][finish.j];
     }
 }
 

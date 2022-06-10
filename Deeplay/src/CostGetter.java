@@ -13,13 +13,14 @@ public class CostGetter {
 
     /**
      * Считывает и парсит в static Map данные из файлы
-     * @param newFileName имя файла с даннными
+     * @param fileName имя файла с даннными
      */
-    public static void parseCostsFromFile(String newFileName) {
-        if (!stepCostForRaces.isEmpty()) return;
-        try (BufferedReader reader = new BufferedReader(new FileReader(newFileName))) {
+    public static boolean parseCostsFromFile(String fileName) {
+        if (!stepCostForRaces.isEmpty()) return true;
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             while (reader.ready()) {
                 String input = reader.readLine();
+                if (!input.contains("~")) return false;
                 String[] parts = input.split("~");
                 String race = parts[0];
                 Map <Character, Integer> stepCosts = new HashMap<>();
@@ -32,12 +33,14 @@ public class CostGetter {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
+        return (!stepCostForRaces.isEmpty());
     }
 
     /**
      * Ищет стоимость шагов для расы в Map из файла
-     * @param race - искомое существо
+     * @param race искомое существо
      * @return null если раса не найдена
      */
     public static Map<Character, Integer> getCost(String race) {
