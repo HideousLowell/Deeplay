@@ -30,6 +30,7 @@ class CostGetter {
                 stepCostForRaces.put(race, stepCosts);
             }
         } catch (IOException e) {
+            System.out.println("error");
             e.printStackTrace();
             return false;
         }
