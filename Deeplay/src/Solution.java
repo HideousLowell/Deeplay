@@ -6,10 +6,9 @@ public class Solution {
     public static int getResult (String cells, String race) throws IllegalArgumentException {
         if (InputChecker.isBadString(cells) || InputChecker.isBadString(race))
             throw new IllegalArgumentException("Wrong arguments");
-        int result = 0;
-        CostGetter parser = new CostGetter();
+        int result;
         CostGetter.parseCostsFromFile("info.txt");
-        Map<Character, Integer> cost = parser.getCost(race);
+        Map<Character, Integer> cost = CostGetter.getCost(race);
         int [][]myMap = MapCreator.create(cells, cost, 4);
         PathFinder pathFinder = new PathFinder(myMap);
         result = pathFinder.getShortestPath(0,0, 3, 3);

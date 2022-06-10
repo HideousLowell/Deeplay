@@ -5,20 +5,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CostGetter {
-    private static Map<String, Map<Character, Integer>> stepCostForRaces;
+    final private static Map<String, Map<Character, Integer>> stepCostForRaces;
 
-    public CostGetter() {
-        if (stepCostForRaces == null) {
-            stepCostForRaces = new HashMap<>();
-        }
+    static  {
+        stepCostForRaces = new HashMap<>();
     }
 
     /**
      * Считывает и парсит в static Map данные из файлы
-     * @param filename
+     * @param newFileName имя файла с даннными
      */
-    public static void parseCostsFromFile(String filename) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+    public static void parseCostsFromFile(String newFileName) {
+        if (!stepCostForRaces.isEmpty()) return;
+        try (BufferedReader reader = new BufferedReader(new FileReader(newFileName))) {
             while (reader.ready()) {
                 String input = reader.readLine();
                 String[] parts = input.split("~");
@@ -31,17 +30,17 @@ public class CostGetter {
                 }
                 stepCostForRaces.put(race, stepCosts);
             }
-        } catch (IOException e) {;
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
      * Ищет стоимость шагов для расы в Map из файла
-     * @param race
+     * @param race - искомое существо
      * @return null если раса не найдена
      */
-    public Map<Character, Integer> getCost(String race) {
+    public static Map<Character, Integer> getCost(String race) {
         return stepCostForRaces.get(race);
     }
 }
