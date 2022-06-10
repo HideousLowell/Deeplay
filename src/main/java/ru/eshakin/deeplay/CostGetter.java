@@ -1,15 +1,13 @@
+package ru.eshakin.deeplay;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CostGetter {
-    final private static Map<String, Map<Character, Integer>> stepCostForRaces;
-
-    static  {
-        stepCostForRaces = new HashMap<>();
-    }
+class CostGetter {
+    final private static Map<String, Map<Character, Integer>> stepCostForRaces = new HashMap<>();
 
     /**
      * Считывает и парсит в static Map данные из файлы

@@ -1,12 +1,14 @@
+package ru.eshakin.deeplay;
+
 import java.util.Map;
 
-public class MapCreator {
+class MapCreator {
 
     /**
      * Создает и заполняет карту данными о стоимости шагов по клеткам
      * @return карту размера size x size
      */
-    public static int[][] create(String cells, Map<Character, Integer> cost, int size) throws IllegalArgumentException  {
+    static int[][] create(String cells, Map<Character, Integer> cost, int size) throws IllegalArgumentException  {
         int[][]map = new int[size][size];
         for (int i = 0, s = 0; i < size; i++) {
             for (int j = 0; j < size && s < cells.length(); j++, s++) {

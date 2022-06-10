@@ -1,8 +1,10 @@
+package ru.eshakin.deeplay;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PathFinder {
+class PathFinder {
 
     private final Queue<Coordinates> myQueue = new LinkedList<>();
     private final boolean[][] used;
@@ -34,11 +36,12 @@ public class PathFinder {
 
     /**
      * Аналог алгоритма Дейкстры, который работает не с графом, а с матрицей
+     *
      * @return Наикратчайший путь
      */
-     public int getShortestPath(Coordinates start,  Coordinates finish) {
-         minWay[start.i][start.j] = 0;
-         myQueue.add(start);
+     int getShortestPath(Coordinates start, Coordinates finish) {
+        minWay[start.i][start.j] = 0;
+        myQueue.add(start);
         while (!myQueue.isEmpty()) {
             Coordinates curPos = myQueue.peek();
             myQueue.remove();
