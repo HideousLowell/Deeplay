@@ -10,6 +10,7 @@ class CostGetterTest {
     void parseCostsFromFile_ReturnFalse_IfNotFound() {
         assertFalse(CostGetter.parseCostsFromFile("NOTFOUND.txt"));
     }
+
     @Test
     void parseCostsFromFile_ReturnTrue_IfExist() {
         assertTrue(CostGetter.parseCostsFromFile("data.txt"));

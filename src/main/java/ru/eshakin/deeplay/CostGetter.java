@@ -20,7 +20,7 @@ class CostGetter {
                 if (!input.contains("~")) return false;
                 String[] parts = input.split("~");
                 String race = parts[0];
-                Map <Character, Integer> stepCosts = new HashMap<>();
+                Map<Character, Integer> stepCosts = new HashMap<>();
                 for (int i = 1; i < parts.length; i++) {
                     Character cellType = parts[i].charAt(0);
                     Integer cost = Integer.parseInt(parts[i].substring(2));
@@ -36,6 +36,7 @@ class CostGetter {
 
     /**
      * Ищет стоимость шагов для расы в Map из файла
+     *
      * @param race искомое существо
      * @return null если раса не найдена
      */

@@ -6,6 +6,7 @@ package ru.eshakin.deeplay;
 class Coordinates {
     public int i;
     public int j;
+
     Coordinates(int i, int j) {
         this.i = i;
         this.j = j;

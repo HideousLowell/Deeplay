@@ -39,7 +39,7 @@ class PathFinder {
      *
      * @return -1, если координаты за пределами карты
      */
-     int getShortestPath(Coordinates start, Coordinates finish) {
+    int getShortestPath(Coordinates start, Coordinates finish) {
         minWay[start.i][start.j] = 0;
         myQueue.add(start);
         while (!myQueue.isEmpty()) {
