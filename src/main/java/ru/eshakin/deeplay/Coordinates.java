@@ -3,7 +3,7 @@ package ru.eshakin.deeplay;
 /**
  * Класс для хранения координат клетки
  */
-public class Coordinates {
+class Coordinates {
     public int i;
     public int j;
     Coordinates(int i, int j) {

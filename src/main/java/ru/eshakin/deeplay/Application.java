@@ -2,11 +2,11 @@ package ru.eshakin.deeplay;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            int result = Solution.getResult("STWSWTPPTPTTPWPP", "Human");
-            System.out.println(result);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
+        int HumanResult = Solution.getResult("STWSWTPPTPTTPWPP", "Human");
+        System.out.println(HumanResult);
+        int SwamperResult = Solution.getResult("STWSWTPPTPTTPWPP", "Swamper");
+        System.out.println(SwamperResult);
+        int Woodman = Solution.getResult("STWSWTPPTPTTPWPP", "Woodman");
+        System.out.println(Woodman);
     }
 }
