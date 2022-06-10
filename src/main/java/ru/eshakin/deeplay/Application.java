@@ -7,6 +7,6 @@ public class Application {
         int SwamperResult = Solution.getResult("STWSWTPPTPTTPWPP", "Swamper");
         System.out.println(SwamperResult);
         int Woodman = Solution.getResult("STWSWTPPTPTTPWPP", "Woodman");
-        System.out.println(Woodman);
+        System.out.print(Woodman);
     }
 }
