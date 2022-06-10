@@ -11,7 +11,6 @@ class CostGetter {
 
     /**
      * Считывает и парсит в static Map данные из файлы
-     * @param fileName имя файла с даннными
      */
     public static boolean parseCostsFromFile(String fileName) {
         if (!stepCostForRaces.isEmpty()) return true;
@@ -30,9 +29,7 @@ class CostGetter {
                 stepCostForRaces.put(race, stepCosts);
             }
         } catch (IOException e) {
-            System.out.println("error");
             e.printStackTrace();
-            return false;
         }
         return (!stepCostForRaces.isEmpty());
     }

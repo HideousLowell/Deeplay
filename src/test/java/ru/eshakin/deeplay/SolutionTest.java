@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SolutionTest {
 
     @Test
-    void nullCellTest() {
+    void nullTest() {
         RuntimeException exception = assertThrows(IllegalArgumentException.class, () ->
                 Solution.getResult(null, "Human"));
         Assertions.assertEquals("Check your arguments", exception.getMessage());
