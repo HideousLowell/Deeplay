@@ -7,7 +7,7 @@ public class Solution {
 
     public static int getResult (String cells, String race) throws IllegalArgumentException {
         if (cells.length() != size * size || InputChecker.isBadString(cells) || InputChecker.isBadString(race))
-            throw new IllegalArgumentException("Wrong arguments");
+            throw new IllegalArgumentException("Check your arguments");
         if (!CostGetter.parseCostsFromFile("data.txt"))
             return - 1;
         Map<Character, Integer> cost = CostGetter.getCost(race);
