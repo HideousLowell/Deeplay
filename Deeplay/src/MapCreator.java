@@ -1,7 +1,7 @@
 import java.util.Map;
 
 public class MapCreator {
-    public static int[][] create(String cells, Map<Character, Integer> weights, int size) throws RuntimeException  {
+    public static int[][] create(String cells, Map<Character, Integer> weights, int size) throws IllegalArgumentException  {
         int[][]map = new int[size][size];
         for (int i = 0, s = 0; i < size; i++) {
             for (int j = 0; j < size && s < cells.length(); j++, s++) {
